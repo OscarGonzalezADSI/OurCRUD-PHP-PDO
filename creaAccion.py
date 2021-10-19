@@ -13,11 +13,11 @@ def createPost(campos):
     for campo in campos:
         content += "\t\t$" + campo + " = $_POST[\'" + campo + "\'];\n"
     return content
-    
+
 def createPostDelete(campos):
     content = str("\t\t$" + campos[0] + " = $_POST[\'" + campos[0] + "\'];\n")
     return content
-    
+
 def createSqlInsert(table, campos):
     content = str("")
     content += "\t\t$sql = \"INSERT INTO "
@@ -30,7 +30,7 @@ def createSqlInsert(table, campos):
         i += 1   
     content = content[:-1]+ ")\";\n"
     return content
-    
+
 def createSqlUpdate(table, campos):
     content = str("")
     content += "\t\t$sql = \"UPDATE "+ table +" SET "
@@ -54,7 +54,7 @@ def createbindParamInsert(campos):
         content += "\t\t$reg->bindParam(" + str(i) + ", $" + campo + ");\n"
         i += 1
     return content
-    
+
 def createbindParamUpdate(campos):
     content = str("\t\t$reg = $conexion->prepare($sql);\n")
     i = int(1)
@@ -62,13 +62,13 @@ def createbindParamUpdate(campos):
         content += "\t\t$reg->bindParam(\":" + campo + "\", $" + campo + ");\n"
         i += 1
     return content
-    
+
 def createbindParamDelete(campos):
     content = str("\t\t$reg = $conexion->prepare($sql);\n")
     i = int(1)
     content += "\t\t$reg->bindParam(\":" + campos[0] + "\", $" + campos[0] + ");\n"
-    return content   
-    
+    return content
+
 def validationExecute():
     content = str("")
     content += "\t\tif ($reg->execute() === TRUE) {\n"
