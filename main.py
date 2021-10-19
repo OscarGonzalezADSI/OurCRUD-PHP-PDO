@@ -13,7 +13,7 @@ shutil.copy("recursos/proyecto/modelo/salir.php", "../proyecto/modelo/salir.php"
 shutil.copy("recursos/proyecto/modelo/val-extension.php", "../proyecto/modelo/val-extension.php")
 
 table = str("tabla")
-campos = ["ccod_munic", "convenio", "imagen"];
+campos = ["id_table", "convenio", "imagen"];
 
 content1 = acc.createFileAction(table, campos)
 content2 = tab.createFiletableList(table, campos)
