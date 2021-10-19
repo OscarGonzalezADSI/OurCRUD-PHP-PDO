@@ -1,25 +1,24 @@
-   
 def createSqlSelectRow(table, columns):
     content = str("")
     content += "\t\t$consulta = \"SELECT \n\t\t\t"
     content += ",\n\t\t\t".join(columns)
     content += "\n\t\t\tFROM " + table
-    content += "\n\t\t\tWHERE ccod_munic = :ccod_munic\";\n"
+    content += "\n\t\t\tWHERE " + columns[0] + " = :" + columns[0] + "\";\n"
     return content
-    
+
 def createSqlSelectAll(table, columns):
     content = str("")
     content += "\t\t$consulta = \"SELECT \n\t\t\t"
     content += ",\n\t\t\t".join(columns)
     content += "\n\t\t\tFROM " + table + ";\";\n"
     return content
-    
+   
 def createSqlSelectCount(table, column):
     content = str("")
     content += "\t\t$consulta = \"SELECT count(" + str(column[0]) + ") as cant \n"
     content += "\t\t\tFROM "+ table + "\";\n";
     return content
-    
+
 def viewRow(table, columns):
     content = str("")
     content += "\tfunction viewRow" + table.capitalize() + "($" + columns[0] + ")\n"
